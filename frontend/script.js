@@ -6,12 +6,12 @@ const itemCtn = document.getElementById("item-container");
 const greeting = document.getElementById("user-greeting");
 const logoutBtn = document.getElementById("logout-btn");
 
-// Track edit mode
 let editingTaskId = null;
 
-// Get user data from localStorage
 const userId = localStorage.getItem("userId");
 const username = localStorage.getItem("username");
+
+const API = window.API_BASE_URL;
 
 if (!userId) window.location.href = "login.html";
 if (greeting) greeting.textContent = `Welcome ${username}, this is your personalized To-Do List`;
@@ -31,7 +31,6 @@ function close() {
   itemForm.reset();
 }
 
-// Add Task to DOM
 function createTaskElement(task) {
   const item = document.createElement("div");
   item.classList.add("item");
@@ -64,7 +63,7 @@ function createTaskElement(task) {
     checkbox.type = "checkbox";
     checkbox.checked = sub.completed;
     checkbox.addEventListener("change", async () => {
-      await fetch(`http://localhost:5000/api/tasks/${task._id}/subtasks/${i}`, {
+      await fetch(`${API}/api/tasks/${task._id}/subtasks/${i}`, {
         method: "PATCH",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({ completed: checkbox.checked }),
@@ -83,7 +82,7 @@ function createTaskElement(task) {
   disbtn.innerText = "Discard";
   disbtn.className = "btn discard-btn";
   disbtn.onclick = async () => {
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, { method: "DELETE" });
+    await fetch(`${API}/api/tasks/${task._id}`, { method: "DELETE" });
     item.remove();
   };
 
@@ -91,7 +90,7 @@ function createTaskElement(task) {
   combtn.innerText = "Complete";
   combtn.className = "btn complete-btn";
   combtn.onclick = async () => {
-    await fetch(`http://localhost:5000/api/tasks/${task._id}`, {
+    await fetch(`${API}/api/tasks/${task._id}`, {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ completed: true }),
@@ -103,7 +102,6 @@ function createTaskElement(task) {
   editbtn.innerText = "Edit";
   editbtn.className = "btn edit-btn";
   editbtn.onclick = () => {
-    // Prefill form with task details
     editingTaskId = task._id;
     itemForm.querySelector(".item-title").value = task.title;
     itemForm.querySelector(".item-desc").value = task.description;
@@ -120,7 +118,6 @@ function createTaskElement(task) {
   itemCtn.appendChild(item);
 }
 
-// Form Submit (Create or Update Task)
 itemForm.addEventListener("submit", async (event) => {
   event.preventDefault();
 
@@ -137,11 +134,11 @@ itemForm.addEventListener("submit", async (event) => {
 
   const taskPayload = { title, description, startDate, endDate, priority, subtasks, userId };
 
-  let url = "http://localhost:5000/api/tasks";
+  let url = `${API}/api/tasks`;
   let method = "POST";
 
   if (editingTaskId) {
-    url = `http://localhost:5000/api/tasks/${editingTaskId}`;
+    url = `${API}/api/tasks/${editingTaskId}`;
     method = "PUT";
   }
 
@@ -155,8 +152,8 @@ itemForm.addEventListener("submit", async (event) => {
     overlay.classList.add("hidden");
     itemForm.reset();
     editingTaskId = null;
-    itemCtn.innerHTML = ""; // Clear old tasks
-    const updatedTasks = await fetch(`http://localhost:5000/api/tasks/${userId}`);
+    itemCtn.innerHTML = "";
+    const updatedTasks = await fetch(`${API}/api/tasks/${userId}`);
     const tasks = await updatedTasks.json();
     tasks.forEach(createTaskElement);
   } else {
@@ -164,13 +161,12 @@ itemForm.addEventListener("submit", async (event) => {
   }
 });
 
-// Load Tasks on Page Load
 window.addEventListener("DOMContentLoaded", async () => {
-  const res = await fetch(`http://localhost:5000/api/tasks/${userId}`);
+  const res = await fetch(`${API}/api/tasks/${userId}`);
   const tasks = await res.json();
   tasks.forEach(createTaskElement);
 });
 
-// Event Listeners
 addbtn.addEventListener("click", openFormHandler);
 closeicon.addEventListener("click", close);
+//
