@@ -46,3 +46,9 @@ mongoose
 app.listen(PORT, () => {
   console.log(`🚀 Server running at http://localhost:${PORT}`);
 });
+
+const API_BASE_URL = window.location.hostname.includes("localhost")
+  ? "http://localhost:5000"
+  : "https://todolist1-4pso.onrender.com";
+
+fetch(`${API_BASE_URL}/api/users/register`, {
