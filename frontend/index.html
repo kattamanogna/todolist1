@@ -1,0 +1,50 @@
+<!-- FILE: frontend/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Personal To-Do App</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="main-ctn">
+    <header class="header">
+      <h1 id="user-greeting">Welcome!</h1>
+      <button id="logout-btn" class="btn logout-btn">Logout</button>
+    </header>
+
+    <!-- Overlay Form -->
+    <div class="overlay hidden" id="task-overlay">
+      <form class="item-form" id="task-form">
+        <img src="image.png" alt="close" class="close-icon" id="close-icon" />
+        <input type="text" class="item-title ip" placeholder="Enter title" required />
+        <input type="text" class="item-desc ip" placeholder="Enter description" required />
+        <input type="date" class="item-start-date ip" required />
+        <input type="date" class="item-due-date ip" required />
+        <select class="ip item-priority">
+          <option value="Low">Low Priority</option>
+          <option value="Medium" selected>Medium Priority</option>
+          <option value="High">High Priority</option>
+        </select>
+        <textarea class="ip item-subtasks" placeholder="Enter subtasks, one per line..."></textarea>
+
+        <div class="form-btn-ctn">
+          <button type="submit" class="submit-btn btn">Submit</button>
+          <button type="reset" class="reset-btn btn">Reset</button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Add Button -->
+    <div class="btn-ctn">
+      <button class="add-item-btn btn">Add Task</button>
+    </div>
+
+    <!-- Task Container -->
+    <div class="item-ctn" id="item-container"></div>
+  </div>
+
+  <script src="script.js"></script>
+</body>
+</html>

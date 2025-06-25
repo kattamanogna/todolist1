@@ -1,0 +1,232 @@
+/* === FILE: public/style.css === */
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background: linear-gradient(135deg, #e4615c 0%, #ec987d 100%);
+  height: 100vh;
+  overflow: hidden;
+}
+
+.header {
+  background-color: #4c1c68;
+  color: white;
+  padding: 15px 30px;
+  font-size: 1.5rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logout-btn {
+  background-color: #d32f2f;
+  color: rgb(0, 0, 0);
+  border: none;
+  border-radius: 6px;
+  padding: 8px 16px;
+  cursor: pointer;
+  font-weight: bold;
+}
+
+.overlay {
+  width: 100%;
+  height: 100vh;
+  background-color: rgba(30, 30, 30, 0.95);
+  position: absolute;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 20;
+}
+
+.main-ctn {
+  width: 100vw;
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  position: relative;
+  overflow-y: auto;
+}
+
+.btn-ctn {
+  width: 100%;
+  padding: 20px 30px;
+  background-color: #420353;
+  display: flex;
+  justify-content: flex-start;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+.btn {
+  width: 160px;
+  height: 45px;
+  background-color: #fdf1e3;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  font-size: 1rem;
+  transition: 0.3s ease;
+  cursor: pointer;
+  margin-right: 10px;
+}
+
+.btn:hover {
+  background-color: #e5bfd7;
+  box-shadow: 0 0 8px rgba(0, 0, 0, 0.1);
+}
+
+.item-ctn {
+  width: 100%;
+  min-height: 85vh;
+  padding: 30px;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  background-color: #e1beec;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+.item {
+  width: 300px;
+  background-color: #f5f2fa;
+  border-radius: 15px;
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  color: #161515;
+}
+
+.desc {
+  font-size: 16px;
+  color: #333;
+}
+
+.priority {
+  font-size: 14px;
+  padding: 4px 8px;
+  border-radius: 5px;
+  font-weight: bold;
+  width: fit-content;
+}
+.priority.low {
+  background-color: #b0d7a3;
+  color: #265b1f;
+}
+.priority.medium {
+  background-color: #ffe599;
+  color: #8a6d1b;
+}
+.priority.high {
+  background-color: #f7a7a7;
+  color: #811414;
+}
+
+.date-ctn {
+  display: flex;
+  justify-content: space-between;
+  font-size: 14px;
+  color: #555;
+}
+
+.utility {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.discard-btn,
+.complete-btn {
+  width: 120px;
+  height: 36px;
+  border: none;
+  border-radius: 6px;
+  font-weight: bold;
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.complete-btn {
+  background-color: #4caf50;
+  color: white;
+}
+
+.discard-btn {
+  background-color: #e53935;
+  color: white;
+}
+
+.item-form {
+  width: 500px;
+  background-color: #ffffff;
+  border-radius: 15px;
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.3);
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  gap: 25px;
+  position: relative;
+}
+
+.ip {
+  width: 100%;
+  height: 45px;
+  padding: 10px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.item-subtasks {
+  height: 80px;
+  resize: none;
+}
+
+.ip:focus {
+  outline: none;
+  border-color: #6a11cb;
+}
+
+.form-btn-ctn {
+  display: flex;
+  justify-content: space-between;
+  gap: 20px;
+}
+
+.submit-btn {
+  background-color: #6a11cb;
+  color: #fff;
+}
+
+.reset-btn {
+  background-color: #bdbdbd;
+  color: #fff;
+}
+
+.close-icon {
+  height: 20px;
+  width: 20px;
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+}
+
+.hidden {
+  display: none;
+}
