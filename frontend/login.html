@@ -18,27 +18,37 @@
   </div>
 
   <script>
-    document.getElementById("login-form").addEventListener("submit", async (e) => {
-      e.preventDefault();
+    document.addEventListener("DOMContentLoaded", () => {
+      const API_BASE_URL = window.location.hostname.includes("localhost")
+        ? "http://localhost:5000"
+        : "https://todolist1-4pso.onrender.com";
 
-      const loginId = document.getElementById("login-username").value.trim();
-      const password = document.getElementById("login-password").value.trim();
+      document.getElementById("login-form").addEventListener("submit", async (e) => {
+        e.preventDefault();
 
-      const res = await fetch("https://todolist1-4pso.onrender.com/api/users/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ loginId, password }),
+        const loginId = document.getElementById("login-username").value.trim();
+        const password = document.getElementById("login-password").value.trim();
+
+        try {
+          const res = await fetch(`${API_BASE_URL}/api/users/login`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify({ loginId, password }),
+          });
+
+          if (res.status === 200) {
+            const data = await res.json();
+            localStorage.setItem("userId", data.user._id);
+            localStorage.setItem("username", data.user.username);
+            window.location.href = "index.html";
+          } else {
+            const err = await res.json();
+            alert(err.error || "Invalid credentials.");
+          }
+        } catch (error) {
+          alert("Network error: " + error.message);
+        }
       });
-
-      if (res.status === 200) {
-        const data = await res.json();
-        localStorage.setItem("userId", data.user._id);
-        localStorage.setItem("username", data.user.username);
-        window.location.href = "index.html";
-      } else {
-        const err = await res.json();
-        alert(err.error || "Invalid credentials.");
-      }
     });
   </script>
 </body>
