@@ -82,19 +82,20 @@ body {
 }
 
 .item-ctn {
-  width: 100%;
-  min-height: 85vh;
-  padding: 30px;
+  max-width: 1200px;
+  margin:0 auto;
+  padding: 30px 20px;
   display: flex;
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: flex-start;
   background-color: #e1beec;
   gap: 20px;
   overflow-y: auto;
 }
 
 .item {
-  width: 300px;
+  flex:1 1 300px;
+  max-width: 320px;
   background-color: #f5f2fa;
   border-radius: 15px;
   box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
