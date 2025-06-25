@@ -10,7 +10,7 @@ body {
   background: linear-gradient(to right, #e0c3fc, #8ec5fc);
 
   min-height: 100vh;
-  overflow-x: hidden;
+  overflow-y: scroll;
   margin: 0;
 }
 
@@ -48,13 +48,13 @@ body {
 
 .main-ctn {
   width: 100vw;
-  height: 100vh;
+  height: auto;
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
   position: relative;
-  overflow-y: auto;
+  overflow-y: visible;
 }
 
 .btn-ctn {
@@ -94,9 +94,9 @@ body {
   justify-content: flex-start;
   background-color:transparent;
   gap: 20px;
-  overflow-y: auto;
+  overflow-y: visible;
     border-radius: 16px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.1);
+  box-shadow: none;
 }
 
 .item {
