@@ -36,6 +36,7 @@
     </div>
 
     <!-- Add Button -->
+<div class="content-wrapper">
     <div class="btn-ctn">
       <button class="add-item-btn btn">Add Task</button>
     </div>
@@ -43,12 +44,14 @@
     <!-- Task Container -->
     <div class="item-ctn" id="item-container"></div>
   </div>
-
+</div>
   <!-- Pass dynamic API base URL to script.js -->
   <script>
     window.API_BASE_URL = window.location.hostname.includes("localhost")
       ? "http://localhost:5000"
       : "https://todolist1-4pso.onrender.com";
+
+    
   </script>
 
   <script src="script.js"></script>

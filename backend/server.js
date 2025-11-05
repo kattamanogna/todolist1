@@ -27,7 +27,7 @@ app.get("/", (req, res) => {
 });
 
 // MongoDB Connection
-const mongoURI = process.env.MONGODB_URI;
+const mongoURI = process.env.MONGO_URI;
 
 if (!mongoURI) {
   console.error("❌ MONGODB_URI is not set in environment variables.");
